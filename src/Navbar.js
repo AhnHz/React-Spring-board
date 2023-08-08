@@ -4,6 +4,7 @@ function Navbar() {
     return (
         <>
             <nav className="navbar bg-primary" data-bs-them="dark">
+
             <div className="container-fluid">
                 <Link className="navbar-brand text-white" to="/">Home</Link>
                 <ul className="navbar-nav me-auto">
@@ -12,6 +13,7 @@ function Navbar() {
                     </li>
                 </ul>
             </div>
+            
             </nav>
         </>
     )

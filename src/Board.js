@@ -20,8 +20,6 @@ function Board() {
 
     }, []);
 
- 
-
     return (
         <div>
             <table className="table text-center">
@@ -45,11 +43,9 @@ function Board() {
                                     </Link>
                                 </td>
                                 <td>{question.createDate}</td>
-
                             </tr>
                         )
-                    })}
-                    
+                    })}                   
                 </tbody>
             </table>
         </div>
