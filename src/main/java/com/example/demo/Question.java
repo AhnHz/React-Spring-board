@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -26,6 +27,7 @@ public class Question {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createDate;
 
+    @JsonManagedReference   // 접근을 허용한다 (무한 참조 방지)
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)  // Question과 Answer가 1:N 관계. cascade 같이 삭제한다
     private List<Answer> answerList;
 }
