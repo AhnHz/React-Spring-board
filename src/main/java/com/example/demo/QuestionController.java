@@ -36,4 +36,13 @@ public class QuestionController {
         answer.setQuestion(question);
         answerRepository.save(answer);
     }
+
+    @PostMapping("/question-create")
+    public void questionSubmit(@RequestBody Map<String, String> map) {
+        Question q = new Question();
+        q.setSubject(map.get("subject"));
+        q.setContent(map.get("content"));
+        q.setCreateDate(LocalDateTime.now());
+        questionRepository.save(q);
+    }
 }
