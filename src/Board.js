@@ -22,6 +22,7 @@ function Board() {
 
     return (
         <div>
+            <Link to={"/question-create"} className="btn btn-primary mb-2">질문등록</Link>
             <table className="table text-center">
                 <thead className="table-dark">
                     <tr>
@@ -38,8 +39,13 @@ function Board() {
                             <tr key={index}>
                                 <td>{index+1}</td>
                                 <td>
-                                    <Link to={`/board/${question.id}`}>
+                                    <Link 
+                                        className="text-decoration-none"
+                                        to={`/board/${question.id}`}>
                                         {question.subject}
+                                        <span className="text-danger ms-2">
+                                            <sup>[{question.answerList.length}]</sup>
+                                        </span>
                                     </Link>
                                 </td>
                                 <td>{question.createDate}</td>
