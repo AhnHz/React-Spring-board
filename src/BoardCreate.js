@@ -53,7 +53,6 @@ function BoardCreate() {
                     <label htmlFor="content" className="form-label">내용</label>
                     <textarea onChange={onChange} value={content} 
                         name="content" id="content" className="form-control" row="5">
-
                     </textarea>
                 </div>
                 <input type="submit" value="저장하기" className="btn btn-primary"/>

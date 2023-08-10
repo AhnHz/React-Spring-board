@@ -14,8 +14,7 @@ function Board() {
             } catch (error){
                 console.log(error);
             }
-        }
-    
+        }   
         getQuestionList();
 
     }, []);

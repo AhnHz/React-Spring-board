@@ -20,7 +20,6 @@ function App() {
         <Route path="/question-create" element={<BoardCreate />}/>
         <Route path="/question-modify/:id" element={<BoardModify />}/>
 
-
       </Routes>
       </div>
       

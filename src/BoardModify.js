@@ -23,7 +23,6 @@ function BoardModify() {
         getQuestion();
     }, [params.id])
 
-
     function onChange (event) {
         if(event.target.name === "subject") {
             setSubject(event.target.value);

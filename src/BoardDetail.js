@@ -58,6 +58,7 @@ function BoardDetail() {
         }
     }
 
+    
     return (
         <div>
             <h2 className="border-bottom py-2">{question.subject}</h2>
