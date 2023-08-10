@@ -23,6 +23,9 @@ public class Answer {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createDate;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime modifyDate;
+
     @JsonBackReference     // 접근을 허용하지 않는다 (무한 참조 방지)
     @ManyToOne  // Question과 Answer가 1:N 관계
     private Question question;

@@ -45,4 +45,25 @@ public class QuestionController {
         q.setCreateDate(LocalDateTime.now());
         questionRepository.save(q);
     }
+
+    @PutMapping("/question-modify/{id}")
+    public void questionModify(@PathVariable("id") Integer id, @RequestBody Map<String, String> map) {
+        //System.out.println(map);
+        Question q = this.questionRepository.getReferenceById(id);
+        q.setSubject(map.get("subject"));
+        q.setContent(map.get("content"));
+        q.setModifyDate(LocalDateTime.now());
+        questionRepository.save(q);
+    }
+
+    @DeleteMapping("/question-delete/{id}")
+    public String questionDelete(@PathVariable("id") Integer id) {
+        Optional<Question> question = this.questionRepository.findById(id);
+        if (question.isPresent()) {
+            Question q = question.get();
+            questionRepository.delete(q);
+            return null;
+        } else {
+        }
+    }
 }

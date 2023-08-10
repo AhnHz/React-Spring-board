@@ -27,6 +27,9 @@ public class Question {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createDate;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime modifyDate;
+
     @JsonManagedReference   // 접근을 허용한다 (무한 참조 방지)
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)  // Question과 Answer가 1:N 관계. cascade 같이 삭제한다
     private List<Answer> answerList;
