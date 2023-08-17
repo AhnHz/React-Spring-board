@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 function Board() {
     const [questionList, setQuestionList] = useState([]);
@@ -21,7 +22,7 @@ function Board() {
 
     return (
         <div>
-            <Link to={"/question-create"} className="btn btn-primary mb-2">질문등록</Link>
+            <Link to={"/question-create"} className="btn btn-primary mb-2">질문 등록</Link>
             <table className="table text-center">
                 <thead className="table-dark">
                     <tr>
@@ -47,7 +48,7 @@ function Board() {
                                         </span>
                                     </Link>
                                 </td>
-                                <td>{question.createDate}</td>
+                                <td>{moment(question.createDate).format("YYYY-MM-DD HH:mm:ss")}</td>
                             </tr>
                         )
                     })}                   

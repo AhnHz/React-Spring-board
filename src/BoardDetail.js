@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom"
+import moment from "moment";
 
 function BoardDetail() {
     const [question, setQuestion] = useState({});   // {} 객체화
@@ -29,11 +30,11 @@ function BoardDetail() {
 
     async function onSubmit(event){
         if (answerText === "") {
-            alert("경고! 답변 내용을 입력하세요.")
+            alert("답변 내용을 입력하세요.")
         } else {
             event.preventDefault();
             try {
-                const result = await axios.post(`http://localhost:8080/buy-create/${params.id}`,{content: buyText});
+                const result = await axios.post(`http://localhost:8080/answer-create/${params.id}`,{content: answerText});
                 
                 if (result.status === 200) {
                     navigate(0);
@@ -58,7 +59,7 @@ function BoardDetail() {
         }
     }
 
-    
+
     return (
         <div>
             <h2 className="border-bottom py-2">{question.subject}</h2>
@@ -67,8 +68,8 @@ function BoardDetail() {
                         <div className="card-text" style={{whiteSpace: "pre-line"}}>{question.content}</div>
                         <div className="d-flex justify-content-end">
                             <div className="badge bg-light text-dark p-2 text-start">
-                                <div>작성 시간: {question.createDate}</div>
-                                {question.modifyDate && <div className="mt-3">수정 시간: {question.modifyDate}</div>}
+                                <div>작성: {moment(question.createDate).format("YYYY-MM-DD HH:mm:ss")}</div>
+                                {question.modifyDate && <div className="mt-3">수정: {moment(question.modifyDate).format("YYYY-MM-DD HH:mm:ss")}</div>}
                             </div>
                         </div>
 
@@ -97,7 +98,7 @@ function BoardDetail() {
                         <div className="card-text" style={{whiteSpace: "pre-line"}}>{answer.content}</div>
                         <div className="d-flex justify-content-end">
                             <div className="badge bg-light text-dark p-2 text-start">
-                                <div>{answer.createDate}</div>
+                                <div>{moment(answer.createDate).format("YYYY-MM-DD HH:mm:ss")}</div>
                             </div>
                         </div>
                         <div className="mt-3">                  
@@ -108,8 +109,8 @@ function BoardDetail() {
             })}
 
             <form onSubmit={onSubmit} className="my-3">
-                <textarea onChange ={onChange} name="content" id="content" rows="10" className="form-control"></textarea>
-                <input type="submit" value="답변등록" className="btn btn-primary my-2" />
+                <textarea onChange ={onChange} value={answerText} name="content" id="content" rows="4" className="form-control"></textarea>
+                <input type="submit" value="답변 등록" className="btn btn-primary my-2" />
             </form>
         </div>
     )
